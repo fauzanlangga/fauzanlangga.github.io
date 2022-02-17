@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -11,46 +12,53 @@
     <!-- Bootsrap Icon -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
 
+    <!-- AOS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <!--  Favicon  -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
     <!-- My CSS -->
     <link rel="stylesheet" href="style.css" />
 
     <title>My Portofolio | Ahmad Fauzan Langga</title>
-  </head>
-  <body id="home">
+</head>
+
+<body id="home">
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm fixed-top">
-      <div class="container">
-        <a class="navbar-brand" href="#">Ahmad Fauzan Langga</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <div class="container">
+            <a class="navbar-brand" href="#">Ahmad Fauzan Langga</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#home">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#about">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#projects">Project</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#contact">Contact</a>
-            </li>
-          </ul>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">Project</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-      </div>
     </nav>
     <!-- Akhir Navbar -->
 
     <!-- Jumbotron -->
     <section class="jumbotron text-center">
-      <img src="img/jan.jpeg" alt="fauzanlangga" width="250" class="rounded-circle img-thumbnail" />
+        <img src="img/jj.jpg" alt="fauzanlangga" width="250" class="rounded-circle img-thumbnail" />
 
-      <h1 class="display-4">Fauzan Langga</h1>
-      <p class="lead">Student | Programmer</p>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        <h1 class="display-4">Fauzan Langga</h1>
+        <p class="lead">Content Creator | Front End Developer</p>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
         <path
           fill="#ffff"
           fill-opacity="1"
@@ -62,22 +70,23 @@
 
     <!-- About -->
     <section id="about">
-      <div class="container">
-        <div class="row text-center mb-3">
-          <div class="col">
-            <h2>About Me</h2>
-          </div>
+        <div class="container">
+            <div class="row text-center mb-3">
+                <div class="col">
+                    <h2>About Me</h2>
+                </div>
+            </div>
+            <div class="row justify-content-center fs-5 text-center">
+                <div class="col-md-4" data-aos="fade-right" data-aos-duration="1000">
+                    <p>Saya aktif di organisasi kampus sempat menjabat menjadi ketua himpunan jurusan periode 2019-2020. Sempat mengikuti AYIMUN Cameroon OIC Delegaion. Saya mengikuti workshop keahlian di Skydu Academy untuk front end. Saya mendapatkan beberapa
+                        sertifikasi diantaranya MOS dan Junior Graphic Designer.</p>
+                </div>
+                <div class="col-md-4" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+                    <p> Saat ini kesibukan saya nyusun skripsi di Universitas Sangga Buana dan sedang menjabat di BEM kampus menjadi Mentri KOMINFO. Saya juga tergabung dalam Shiftmedia sebagai Content Creator di Lesswaste Shift dan Software Engineer Shift.</p>
+                </div>
+            </div>
         </div>
-        <div class="row justify-content-center fs-5 text-center">
-          <div class="col-md-4">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium dolor commodi consequuntur laboriosam numquam delectus dignissimos recusandae aut expedita sequi?</p>
-          </div>
-          <div class="col-md-4">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla illo sit obcaecati natus at numquam dignissimos totam animi. Sed vitae fugit aspernatur temporibus nesciunt perspiciatis.</p>
-          </div>
-        </div>
-      </div>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
         <path
           fill="#e2edff"
           fill-opacity="1"
@@ -89,40 +98,105 @@
 
     <!-- Projects -->
     <section id="projects">
-      <div class="container">
-        <div class="row text-center mb-3">
-          <div class="col">
-            <h2>My projects</h2>
-          </div>
+        <div class="container">
+            <div class="row text-center mb-3">
+                <div class="col">
+                    <h2>My projects</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <div class="card">
+                        <img src="img/1.png" class="card-img-top" alt="1" />
+                        <div class="card-body">
+                            <p class="card-text">Content Quotes Lesswaste. <a href="https://www.instagram.com/p/CXXYp2HPWlS/" class="text-dark fw-bold">Here</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card">
+                        <img src="img/2.png" class="card-img-top" alt="2" />
+                        <div class="card-body">
+                            <p class="card-text">Content Quotes Lesswaste. <a href="https://www.instagram.com/p/CXXYp2HPWlS/" class="text-dark fw-bold">Here</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card">
+                        <img src="img/3.png" class="card-img-top" alt="3" />
+                        <div class="card-body">
+                            <p class="card-text">Content Quotes Lesswaste. <a href="https://www.instagram.com/p/CXXYp2HPWlS/" class="text-dark fw-bold">Here</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card">
+                        <img src="img/4.png" class="card-img-top" alt="4" />
+                        <div class="card-body">
+                            <p class="card-text">Content Quotes Lesswaste.<a href="https://www.instagram.com/p/CXXYp2HPWlS/" class="text-dark fw-bold">Here</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card">
+                        <img src="img/slide 1.png" class="card-img-top" alt="5" />
+                        <div class="card-body">
+                            <p class="card-text"> Content Plastic Polution Lesswaste. <a href="https://www.instagram.com/p/CSJyprHFmVY/" class="text-dark fw-bold">Here</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card">
+                        <img src="img/starterkit1.jpg" class="card-img-top" alt="10" />
+                        <div class="card-body">
+                            <p class="card-text"> Content Starter Pack Lesswaste. <a href="https://www.instagram.com/p/CYQ_Q8ZFCop/" class="text-dark fw-bold">Here</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <div class="card">
+                        <img src="img/1b.png" class="card-img-top" alt="6" />
+                        <div class="card-body">
+                            <p class="card-text"> Content World Water Monitoring Day Lesswaste <a href="https://www.instagram.com/p/CT8_1RBlvcX/" class="text-dark fw-bold">Here</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card">
+                        <img src="img/1a.png" class="card-img-top" alt="6" />
+                        <div class="card-body">
+                            <p class="card-text"> Content Puzzle Lesswaste <a href="https://www.instagram.com/p/CT6-Wj0pkVw/" class="text-dark fw-bold">Here</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card">
+                        <img src="img/sampah makanan.jpg" class="card-img-top" alt="6" />
+                        <div class="card-body">
+                            <p class="card-text"> Content Food Waste Lesswaste <a href="https://www.instagram.com/p/CSjcRjfFOyj/" class="text-dark fw-bold">Here</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card">
+                        <img src="img/sate.jpg" class="card-img-top" alt="6" />
+                        <div class="card-body">
+                            <p class="card-text"> Poster Jual Telur Gulung </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card">
+                        <img src="img/1 (2).png" class="card-img-top" alt="4" />
+                        <div class="card-body">
+                            <p class="card-text"> Cara Mengurangi Sampah <a href="https://www.instagram.com/p/CaET9iQvwOJ/" class="text-dark fw-bold">Here</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="row">
-          <div class="col-md-4 mb-3">
-            <div class="card">
-              <img src="..." class="card-img-top" alt="..." />
-              <div class="card-body">
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 mb-3">
-            <div class="card">
-              <img src="..." class="card-img-top" alt="..." />
-              <div class="card-body">
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 mb-3">
-            <div class="card">
-              <img src="..." class="card-img-top" alt="..." />
-              <div class="card-body">
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
         <path
           fill="#fff"
           fill-opacity="1"
@@ -131,45 +205,62 @@
       </svg>
     </section>
     <!-- Akhir Projects -->
+    <section id="gallery">
+        <div class="container">
+            <div class="row text-center mb-3">
+                <div class="col">
+                    <h2>Gallery</h2>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <a href="#">
+                    <img src="" alt="" />
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- Gallery -->
+
+    <!-- Akhir Gallery -->
 
     <!-- Contact -->
     <section id="contact">
-      <div class="container">
-        <div class="row text-center mb-3">
-          <div class="col">
-            <h2>Contact Me</h2>
-          </div>
-        </div>
-        <div class="row justify-content-center">
-          <div class="col-md-6">
-            <div class="alert alert-success alert-dismissible fade show d-none my-alert" role="alert">
-              <strong>Terima Kasih!</strong> Pesan anda sudah kami terima.
-              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <div class="container">
+            <div class="row text-center mb-3">
+                <div class="col">
+                    <h2>Contact Me</h2>
+                </div>
             </div>
-            <form name="wpu-contact-form">
-              <div class="mb-3">
-                <label for="name" class="form-label">Nama Lengkap</label>
-                <input type="text" class="form-control" id="name" aria-describedby="name" name="nama" />
-              </div>
-              <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email" />
-              </div>
-              <div class="mb-3">
-                <label for="pesan" class="form-label">Pesan</label>
-                <textarea class="form-control" id="pesan" rows="3" name="pesan"></textarea>
-              </div>
-              <button type="submit" class="btn btn-primary btn-kirim">Kirim</button>
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="alert alert-success alert-dismissible fade show d-none my-alert" role="alert">
+                        <strong>Terima Kasih!</strong> Pesan anda sudah kami terima.
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    <form name="wpu-contact-form">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Nama Lengkap</label>
+                            <input type="text" class="form-control" id="name" aria-describedby="name" name="nama" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="pesan" class="form-label">Pesan</label>
+                            <textarea class="form-control" id="pesan" rows="3" name="pesan"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-kirim">Kirim</button>
 
-              <button class="btn btn-primary btn-loading d-none" type="button" disabled>
+                        <button class="btn btn-primary btn-loading d-none" type="button" disabled>
                 <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
                 Loading...
               </button>
-            </form>
-          </div>
+                    </form>
+                </div>
+            </div>
         </div>
-      </div>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
         <path
           fill="#0d6efd"
           fill-opacity="1"
@@ -181,38 +272,49 @@
 
     <!-- Footer -->
     <footer class="bg-primary text-white text-center pb-5">
-      <p>Created with <i class="bi bi-suit-heart-fill text-danger"></i> by <a href="https://www.instagram.com/fauzanlangga/" class="text-white fw-bold">Ahmad Fauzan Langga</a></p>
+        <p>Created by <a href="https://www.instagram.com/fauzanlangga/" class="text-white fw-bold">fauzanlangga</a></p>
     </footer>
     <!-- Akhir Footer -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-      const scriptURL = "https://script.google.com/macros/s/AKfycbyfMfW1bujvmfhY3l__mrv_FXd1c5iOkwMd3KNDhaStJRGhr1OH2pgHqNXh-2BNUk_C/exec";
-      const form = document.forms["wpu-contact-form"];
-      const btnKirim = document.querySelector(".btn-kirim");
-      const btnLoading = document.querySelector(".btn-loading");
-      const myAlert = document.querySelector(".my-alert");
+        AOS.init({
+            once: true,
+        });
+    </script>
 
-      form.addEventListener("submit", (e) => {
-        e.preventDefault();
-        // ketika tombol submit diklik
-        // tampilkan tombol loading, hilangkan tombol kirim
-        btnLoading.classList.toggle("d-none");
-        btnKirim.classList.toggle("d-none");
-        fetch(scriptURL, { method: "POST", body: new FormData(form) })
-          .then((response) => {
-            //tampilkan tombol kirim, hilangkan tombol loading
+    <script>
+        const scriptURL = "https://script.google.com/macros/s/AKfycbyfMfW1bujvmfhY3l__mrv_FXd1c5iOkwMd3KNDhaStJRGhr1OH2pgHqNXh-2BNUk_C/exec";
+        const form = document.forms["wpu-contact-form"];
+        const btnKirim = document.querySelector(".btn-kirim");
+        const btnLoading = document.querySelector(".btn-loading");
+        const myAlert = document.querySelector(".my-alert");
+
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            // ketika tombol submit diklik
+            // tampilkan tombol loading, hilangkan tombol kirim
             btnLoading.classList.toggle("d-none");
             btnKirim.classList.toggle("d-none");
-            //tampilkan alert
-            myAlert.classList.toggle("d-none");
-            //reset formnya
-            form.reset();
-            console.log("Success!", response);
-          })
-          .catch((error) => console.error("Error!", error.message));
-      });
+            fetch(scriptURL, {
+                    method: "POST",
+                    body: new FormData(form)
+                })
+                .then((response) => {
+                    //tampilkan tombol kirim, hilangkan tombol loading
+                    btnLoading.classList.toggle("d-none");
+                    btnKirim.classList.toggle("d-none");
+                    //tampilkan alert
+                    myAlert.classList.toggle("d-none");
+                    //reset formnya
+                    form.reset();
+                    console.log("Success!", response);
+                })
+                .catch((error) => console.error("Error!", error.message));
+        });
     </script>
-  </body>
+</body>
+
 </html>
