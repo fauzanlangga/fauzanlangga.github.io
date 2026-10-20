@@ -12,7 +12,8 @@ import {
   Eye,
   X,
   Sparkles,
-  Terminal
+  Terminal,
+  Loader2
 } from 'lucide-react';
 
 interface Experience {
@@ -307,12 +308,24 @@ export default function App() {
     ? projects
     : projects.filter(p => p.category === projectFilter);
 
-  // Form submit handler with timeout protection
+  // Form submit handler with timeout protection & multi-header spreadsheet sync
   const handleContactSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formName.trim() || !formEmail.trim() || !formMessage.trim()) {
+    const trimmedName = formName.trim();
+    const trimmedEmail = formEmail.trim();
+    const trimmedMessage = formMessage.trim();
+
+    if (!trimmedName || !trimmedEmail || !trimmedMessage) {
       setFormStatus('error');
-      setFormFeedback('Please fill in your name, email, and message completely.');
+      setFormFeedback('Mohon lengkapi nama, email, dan pesan Anda sebelum mengirim.');
+      return;
+    }
+
+    // Basic email format check
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(trimmedEmail)) {
+      setFormStatus('error');
+      setFormFeedback('Format alamat email tidak valid. Pastikan contoh: nama@domain.com');
       return;
     }
 
@@ -320,14 +333,40 @@ export default function App() {
     setFormFeedback('');
 
     const scriptURL = "https://script.google.com/macros/s/AKfycbyfMfW1bujvmfhY3l__mrv_FXd1c5iOkwMd3KNDhaStJRGhr1OH2pgHqNXh-2BNUk_C/exec";
+    const now = new Date();
+    const formattedTimestamp = now.toLocaleString('id-ID', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit'
+    });
+
+    // Send multi-key compatibility aliases so it matches any Google Sheet header column
     const formData = new FormData();
-    formData.append('nama', formName);
-    formData.append('email', formEmail);
-    formData.append('pesan', formMessage);
+    formData.append('nama', trimmedName);
+    formData.append('Nama', trimmedName);
+    formData.append('name', trimmedName);
+    formData.append('Name', trimmedName);
+
+    formData.append('email', trimmedEmail);
+    formData.append('Email', trimmedEmail);
+
+    formData.append('pesan', trimmedMessage);
+    formData.append('Pesan', trimmedMessage);
+    formData.append('message', trimmedMessage);
+    formData.append('Message', trimmedMessage);
+
+    formData.append('timestamp', formattedTimestamp);
+    formData.append('Timestamp', formattedTimestamp);
+    formData.append('tanggal', formattedTimestamp);
+    formData.append('Tanggal', formattedTimestamp);
 
     try {
       const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 8000);
+      // Google Apps Script cold-start can take up to 6-10 seconds
+      const timeoutId = setTimeout(() => controller.abort(), 12000);
 
       await fetch(scriptURL, {
         method: 'POST',
@@ -338,13 +377,13 @@ export default function App() {
 
       clearTimeout(timeoutId);
       setFormStatus('success');
-      setFormFeedback('Your message has been sent successfully! Thank you, I will get back to you shortly.');
+      setFormFeedback(`Pesan Anda berhasil terkirim ke Google Spreadsheet Ahmad Fauzan Langga (${formattedTimestamp}). Terima kasih!`);
       setFormName('');
       setFormEmail('');
       setFormMessage('');
     } catch {
       setFormStatus('error');
-      setFormFeedback('Connection timed out. You can also contact me directly via email at fauzanlangga54@gmail.com.');
+      setFormFeedback('Koneksi ke endpoint formulir mengalami timeout atau kendala jaringan. Anda juga dapat mengirim pesan secara langsung melalui email ke fauzanlangga54@gmail.com.');
     }
   };
 
@@ -1162,78 +1201,131 @@ export default function App() {
             <div className="md:col-span-7">
               <form
                 onSubmit={handleContactSubmit}
-                className="p-6 rounded-2xl border border-slate-800 bg-[#0d1017]/90 space-y-4"
+                className={`p-6 rounded-2xl border bg-[#0d1017]/90 space-y-4 transition-colors ${
+                  isTerminal ? 'border-[#00ff66]/30 shadow-[0_0_30px_rgba(0,255,102,0.05)]' : 'border-slate-800'
+                }`}
               >
                 {formStatus === 'success' && (
-                  <div className="p-4 rounded-xl bg-emerald-950/60 border border-emerald-500/40 text-emerald-200 text-xs flex items-center gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
-                    <p>{formFeedback}</p>
+                  <div className="p-4 rounded-xl bg-emerald-950/70 border border-emerald-500/50 text-emerald-200 text-xs space-y-2 animate-in fade-in">
+                    <div className="flex items-start gap-3">
+                      <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
+                      <div className="space-y-1">
+                        <p className="font-semibold text-white">Pesan Berhasil Terkirim!</p>
+                        <p className="text-emerald-300/90 leading-relaxed">{formFeedback}</p>
+                      </div>
+                    </div>
+                    <div className="pt-2 flex items-center justify-end">
+                      <button
+                        type="button"
+                        onClick={() => setFormStatus('idle')}
+                        className="text-[11px] font-mono text-emerald-300 hover:text-white underline underline-offset-2"
+                      >
+                        Kirim pesan lainnya &rarr;
+                      </button>
+                    </div>
                   </div>
                 )}
 
                 {formStatus === 'error' && (
-                  <div className="p-4 rounded-xl bg-red-950/60 border border-red-500/40 text-red-200 text-xs flex items-center gap-3">
-                    <AlertCircle className="w-5 h-5 text-red-400 shrink-0" />
-                    <p>{formFeedback}</p>
+                  <div className="p-4 rounded-xl bg-red-950/70 border border-red-500/50 text-red-200 text-xs space-y-3 animate-in fade-in">
+                    <div className="flex items-start gap-3">
+                      <AlertCircle className="w-5 h-5 text-red-400 shrink-0 mt-0.5" />
+                      <div className="space-y-1">
+                        <p className="font-semibold text-white">Pengiriman Pesan Terkendala</p>
+                        <p className="text-red-300/90 leading-relaxed">{formFeedback}</p>
+                      </div>
+                    </div>
+                    <div className="pt-1 flex items-center gap-2">
+                      <a
+                        href={`mailto:fauzanlangga54@gmail.com?subject=${encodeURIComponent(`Project Inquiry - ${formName || 'Portfolio Visitor'}`)}&body=${encodeURIComponent(formMessage || '')}`}
+                        className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition ${
+                          isTerminal 
+                            ? 'bg-[#00ff66]/20 border border-[#00ff66]/40 text-[#00ff66] hover:bg-[#00ff66]/30'
+                            : 'bg-cyan-950 border border-cyan-500/40 text-cyan-300 hover:bg-cyan-900'
+                        }`}
+                      >
+                        <Mail className="w-3.5 h-3.5" />
+                        <span>Kirim Langsung via Email Client</span>
+                      </a>
+                    </div>
                   </div>
                 )}
 
                 <div className="space-y-1.5">
-                  <label htmlFor="contact-name" className="text-xs font-mono text-slate-300">
-                    Full Name
+                  <label htmlFor="contact-name" className={`text-xs font-mono ${isTerminal ? 'text-[#00ff66]' : 'text-slate-300'}`}>
+                    Nama Lengkap / Full Name <span className="text-red-400">*</span>
                   </label>
                   <input
                     id="contact-name"
                     type="text"
                     required
-                    placeholder="Enter your full name"
+                    placeholder="Masukkan nama lengkap Anda"
                     value={formName}
                     onChange={(e) => setFormName(e.target.value)}
-                    className="w-full bg-[#05070a] border border-slate-800 rounded-xl px-4 py-2.5 text-xs text-slate-100 placeholder-slate-600 focus:outline-none focus:border-cyan-500 transition"
+                    className={`w-full bg-[#05070a] border rounded-xl px-4 py-2.5 text-xs text-slate-100 placeholder-slate-600 focus:outline-none transition ${
+                      isTerminal
+                        ? 'border-[#00ff66]/30 focus:border-[#00ff66] focus:ring-1 focus:ring-[#00ff66]/30'
+                        : 'border-slate-800 focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/30'
+                    }`}
                   />
                 </div>
 
                 <div className="space-y-1.5">
-                  <label htmlFor="contact-email" className="text-xs font-mono text-slate-300">
-                    Email Address
+                  <label htmlFor="contact-email" className={`text-xs font-mono ${isTerminal ? 'text-[#00ff66]' : 'text-slate-300'}`}>
+                    Alamat Email / Email Address <span className="text-red-400">*</span>
                   </label>
                   <input
                     id="contact-email"
                     type="email"
                     required
-                    placeholder="name@organization.com"
+                    placeholder="nama@perusahaan.com atau nama@email.com"
                     value={formEmail}
                     onChange={(e) => setFormEmail(e.target.value)}
-                    className="w-full bg-[#05070a] border border-slate-800 rounded-xl px-4 py-2.5 text-xs text-slate-100 placeholder-slate-600 focus:outline-none focus:border-cyan-500 transition"
+                    className={`w-full bg-[#05070a] border rounded-xl px-4 py-2.5 text-xs text-slate-100 placeholder-slate-600 focus:outline-none transition ${
+                      isTerminal
+                        ? 'border-[#00ff66]/30 focus:border-[#00ff66] focus:ring-1 focus:ring-[#00ff66]/30'
+                        : 'border-slate-800 focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/30'
+                    }`}
                   />
                 </div>
 
                 <div className="space-y-1.5">
-                  <label htmlFor="contact-message" className="text-xs font-mono text-slate-300">
-                    Project Inquiry / Message
+                  <label htmlFor="contact-message" className={`text-xs font-mono ${isTerminal ? 'text-[#00ff66]' : 'text-slate-300'}`}>
+                    Pesan / Project Inquiry / Cybersecurity Scope <span className="text-red-400">*</span>
                   </label>
                   <textarea
                     id="contact-message"
                     required
                     rows={4}
-                    placeholder="Describe your inquiry, project scope, or cybersecurity consultation..."
+                    placeholder="Tuliskan detail kebutuhan konsultasi penetration testing, secure software engineering, atau kolaborasi konten..."
                     value={formMessage}
                     onChange={(e) => setFormMessage(e.target.value)}
-                    className="w-full bg-[#05070a] border border-slate-800 rounded-xl px-4 py-2.5 text-xs text-slate-100 placeholder-slate-600 focus:outline-none focus:border-cyan-500 transition resize-none"
+                    className={`w-full bg-[#05070a] border rounded-xl px-4 py-2.5 text-xs text-slate-100 placeholder-slate-600 focus:outline-none transition resize-none ${
+                      isTerminal
+                        ? 'border-[#00ff66]/30 focus:border-[#00ff66] focus:ring-1 focus:ring-[#00ff66]/30'
+                        : 'border-slate-800 focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/30'
+                    }`}
                   />
                 </div>
 
                 <button
                   type="submit"
                   disabled={formStatus === 'loading'}
-                  className="w-full py-3 bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-black font-bold font-mono text-xs rounded-xl transition-all shadow-[0_0_20px_rgba(0,240,255,0.3)] flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
+                  className={`w-full py-3 font-bold font-mono text-xs rounded-xl transition-all flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed ${
+                    isTerminal
+                      ? 'bg-[#00ff66] hover:bg-[#33ff85] text-black shadow-[0_0_20px_rgba(0,255,102,0.35)]'
+                      : 'bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-black shadow-[0_0_20px_rgba(0,240,255,0.3)]'
+                  }`}
                 >
                   {formStatus === 'loading' ? (
-                    <span>Sending Message...</span>
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                      <span>Mengirim ke Google Spreadsheet...</span>
+                    </>
                   ) : (
                     <>
                       <Send className="w-4 h-4" />
-                      <span>Send Message Now</span>
+                      <span>Kirim Pesan Sekarang</span>
                     </>
                   )}
                 </button>
