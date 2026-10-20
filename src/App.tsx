@@ -246,7 +246,7 @@ export default function App() {
       category: 'cyber',
       categoryLabel: 'Cyber Security · BSSN Standard',
       description: 'Comprehensive web security assessment covering OWASP Top 10 vulnerabilities (SQL Injection, XSS, Broken Authentication, IDOR). Identifying vulnerabilities, evaluating attack vectors, and formulating system hardening patches.',
-      imageUrl: '/src/assets/images/cyber_hero_grid_1792470757115.jpg',
+      imageUrl: '/img/cyber_hero.jpg',
       tags: ['BSSN Certified', 'OWASP Top 10', 'Burp Suite', 'Vulnerability Assessment', 'Ethical Hacking'],
       featured: true
     },
@@ -256,7 +256,7 @@ export default function App() {
       category: 'web',
       categoryLabel: 'Algorithms & PHP',
       description: 'Intelligent heuristic optimization system using Genetic Algorithms to resolve complex timetabling constraints: lecturer overlaps, laboratory assignments, Friday prayer intervals, and room capacities.',
-      imageUrl: '/src/assets/images/cyber_interface_art_1792470758051.jpg',
+      imageUrl: '/img/cyber_interface.jpg',
       tags: ['PHP', 'CodeIgniter', 'Genetic Algorithm', 'Optimization'],
       link: 'https://github.com/fauzanlangga/penjadwalanAlgoritmaGenetika',
       linkType: 'github',
@@ -268,7 +268,7 @@ export default function App() {
       category: 'cyber',
       categoryLabel: 'AI & Computer Vision',
       description: 'Deep Learning Computer Vision system utilizing convolutional U-Net architectures for semantic segmentation and taxonomy classification of micro-plankton specimens, trained on GPU HPC clusters.',
-      imageUrl: '/src/assets/images/cyber_interface_art_1792470758051.jpg',
+      imageUrl: '/img/cyber_interface.jpg',
       tags: ['Python', 'TensorFlow', 'U-Net', 'OpenCV', 'PBS Cluster'],
       link: 'https://github.com/fauzanlangga/klasifikasiPlankton',
       linkType: 'github'
@@ -279,7 +279,7 @@ export default function App() {
       category: 'content',
       categoryLabel: 'Social Campaign',
       description: 'Visual environmental awareness campaign focusing on plastic minimization and sustainable lifestyles with clean typography and persuasive messaging.',
-      imageUrl: 'https://raw.githubusercontent.com/fauzanlangga/fauzanlangga.github.io/main/img/1.png',
+      imageUrl: '/img/1.png',
       tags: ['Graphic Design', 'Copywriting', 'Instagram Carousel'],
       link: 'https://www.instagram.com/p/CXXYp2HPWlS/',
       linkType: 'instagram'
@@ -290,7 +290,7 @@ export default function App() {
       category: 'content',
       categoryLabel: 'Social Campaign',
       description: 'Detailed educational infographic explaining the lifecycle of single-use plastic waste, its hazard to marine ecosystems, and practical reduction alternatives.',
-      imageUrl: 'https://raw.githubusercontent.com/fauzanlangga/fauzanlangga.github.io/main/img/slide%201.png',
+      imageUrl: '/img/slide 1.png',
       tags: ['Visual Infographic', 'Environmental Design', 'Campaign'],
       link: 'https://www.instagram.com/p/CSJyprHFmVY/',
       linkType: 'instagram'
@@ -301,7 +301,7 @@ export default function App() {
       category: 'content',
       categoryLabel: 'Social Campaign',
       description: 'Actionable visual guide highlighting daily sustainable essentials (reusable tumblers, tote bags, metal straws) tailored for younger demographics.',
-      imageUrl: 'https://raw.githubusercontent.com/fauzanlangga/fauzanlangga.github.io/main/img/starterkit1.jpg',
+      imageUrl: '/img/starterkit1.jpg',
       tags: ['Creative Direction', 'Social Media', 'Illustration'],
       link: 'https://www.instagram.com/p/CYQ_Q8ZFCop/',
       linkType: 'instagram'
@@ -312,7 +312,7 @@ export default function App() {
       category: 'content',
       categoryLabel: 'Social Campaign',
       description: 'Commemorative digital campaign addressing global freshwater preservation, watershed quality monitoring, and conservation best practices.',
-      imageUrl: 'https://raw.githubusercontent.com/fauzanlangga/fauzanlangga.github.io/main/img/1b.png',
+      imageUrl: '/img/1b.png',
       tags: ['Poster Design', 'Social Awareness', 'Digital Art'],
       link: 'https://www.instagram.com/p/CT8_1RBlvcX/',
       linkType: 'instagram'
@@ -323,7 +323,7 @@ export default function App() {
       category: 'content',
       categoryLabel: 'Social Campaign',
       description: 'Statistical awareness posters providing step-by-step guidance on cutting domestic food waste and encouraging conscious consumption.',
-      imageUrl: 'https://raw.githubusercontent.com/fauzanlangga/fauzanlangga.github.io/main/img/sampah%20makanan.jpg',
+      imageUrl: '/img/sampah makanan.jpg',
       tags: ['Graphic Art', 'Public Information', 'Food Waste'],
       link: 'https://www.instagram.com/p/CSjcRjfFOyj/',
       linkType: 'instagram'
@@ -334,7 +334,7 @@ export default function App() {
       category: 'content',
       categoryLabel: 'Instagram Grid',
       description: 'Seamless Instagram puzzle grid design engineered to maximize audience engagement and interactive community education.',
-      imageUrl: 'https://raw.githubusercontent.com/fauzanlangga/fauzanlangga.github.io/main/img/1a.png',
+      imageUrl: '/img/1a.png',
       tags: ['Instagram Grid', 'Social Gamification', 'Graphic Design'],
       link: 'https://www.instagram.com/p/CT6-Wj0pkVw/',
       linkType: 'instagram'
@@ -345,7 +345,7 @@ export default function App() {
       category: 'content',
       categoryLabel: 'Social Campaign',
       description: 'Practical visual blueprint for households to eliminate single-use disposables and initiate effective waste-sorting routines.',
-      imageUrl: 'https://raw.githubusercontent.com/fauzanlangga/fauzanlangga.github.io/main/img/1%20(2).png',
+      imageUrl: '/img/1 (2).png',
       tags: ['Actionable Guide', 'Environmental Campaign', 'Visual Poster'],
       link: 'https://www.instagram.com/p/CaET9iQvwOJ/',
       linkType: 'instagram'
@@ -600,10 +600,14 @@ export default function App() {
                   <div className="flex items-center gap-4">
                     <div className="relative">
                       <img
-                        src="https://raw.githubusercontent.com/fauzanlangga/fauzanlangga.github.io/main/img/fau.jpg"
+                        src="/img/fau.jpg"
                         alt="Ahmad Fauzan Langga"
                         className="w-16 h-16 rounded-xl object-cover border border-cyan-500/40 shadow-[0_0_12px_rgba(0,240,255,0.2)]"
-                        referrerPolicy="no-referrer"
+                        onError={(e) => {
+                          const target = e.currentTarget;
+                          target.onerror = null;
+                          target.src = '/img/cyber_hero.jpg';
+                        }}
                       />
                     </div>
                     <div>
@@ -1075,8 +1079,13 @@ export default function App() {
                     <img
                       src={project.imageUrl}
                       alt={project.title}
-                      referrerPolicy="no-referrer"
+                      loading="lazy"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      onError={(e) => {
+                        const target = e.currentTarget;
+                        target.onerror = null;
+                        target.src = '/img/cyber_hero.jpg';
+                      }}
                     />
                     <div className="absolute top-3 left-3">
                       <span className={`text-[10px] font-mono font-semibold uppercase px-2 py-0.5 rounded backdrop-blur ${
@@ -1469,6 +1478,11 @@ export default function App() {
                 src={selectedProject.imageUrl}
                 alt={selectedProject.title}
                 className="w-full h-full object-cover"
+                onError={(e) => {
+                  const target = e.currentTarget;
+                  target.onerror = null;
+                  target.src = '/img/cyber_hero.jpg';
+                }}
               />
             </div>
 
