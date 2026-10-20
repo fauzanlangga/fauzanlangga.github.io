@@ -156,7 +156,7 @@ export default function App() {
   const [formStatus, setFormStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [formFeedback, setFormFeedback] = useState('');
 
-  // Theme toggle state: 'cyber' (default) or 'terminal' (high-contrast Terminal Green)
+  // Theme toggle state: 'cyber' (default) or 'terminal' (high-contrast Terminal Red)
   const [theme, setTheme] = useState<'cyber' | 'terminal'>(() => {
     try {
       const saved = localStorage.getItem('langgard_theme');
@@ -390,7 +390,7 @@ export default function App() {
   return (
     <div className={`min-h-screen relative overflow-x-hidden font-sans transition-colors duration-300 ${
       isTerminal
-        ? 'theme-terminal bg-black text-[#e6ffe8] selection:bg-[#00ff66] selection:text-black'
+        ? 'theme-terminal bg-black text-[#fff0f4] selection:bg-[#ff7597] selection:text-black'
         : 'bg-[#07090e] text-slate-100 selection:bg-cyan-500 selection:text-black'
     }`}>
       {/* Background Cyber Grid Lines with Smooth Panning Motion */}
@@ -400,8 +400,8 @@ export default function App() {
         }`}
         style={{
           backgroundImage: isTerminal
-            ? `linear-gradient(to right, rgba(0, 255, 102, 0.12) 1px, transparent 1px),
-               linear-gradient(to bottom, rgba(0, 255, 102, 0.12) 1px, transparent 1px)`
+            ? `linear-gradient(to right, rgba(255, 117, 151, 0.12) 1px, transparent 1px),
+               linear-gradient(to bottom, rgba(255, 117, 151, 0.12) 1px, transparent 1px)`
             : `linear-gradient(to right, rgba(0, 240, 255, 0.09) 1px, transparent 1px),
                linear-gradient(to bottom, rgba(0, 240, 255, 0.09) 1px, transparent 1px)`,
           backgroundSize: '48px 48px'
@@ -409,14 +409,14 @@ export default function App() {
       />
       <div className={`fixed top-0 left-1/2 -translate-x-1/2 w-[900px] h-[350px] blur-3xl pointer-events-none z-0 transition-all duration-500 ${
         isTerminal
-          ? 'bg-gradient-to-b from-[#00ff66]/15 via-emerald-950/20 to-transparent'
+          ? 'bg-gradient-to-b from-[#ff7597]/15 via-rose-950/20 to-transparent'
           : 'bg-gradient-to-b from-cyan-500/10 via-indigo-500/5 to-transparent'
       }`} />
 
       {/* Top Bar Contract */}
       <header className={`sticky top-0 z-40 backdrop-blur-md border-b transition-colors duration-300 ${
         isTerminal
-          ? 'bg-black/90 border-[#00ff66]/30 shadow-[0_4px_20px_rgba(0,255,102,0.06)]'
+          ? 'bg-black/90 border-[#ff7597]/30 shadow-[0_4px_20px_rgba(255,117,151,0.08)]'
           : 'bg-[#07090e]/85 border-cyan-500/15'
       }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3 sm:gap-6">
@@ -427,13 +427,13 @@ export default function App() {
           >
             <div className={`w-8 h-8 rounded-lg flex items-center justify-center transition-all ${
               isTerminal
-                ? 'bg-[#00220a] border border-[#00ff66]/50 text-[#00ff66] group-hover:border-[#00ff66] group-hover:shadow-[0_0_12px_rgba(0,255,102,0.5)]'
+                ? 'bg-[#2b0014] border border-[#ff7597]/50 text-[#ff7597] group-hover:border-[#ff7597] group-hover:shadow-[0_0_12px_rgba(255,117,151,0.5)]'
                 : 'bg-cyan-950/80 border border-cyan-500/40 text-cyan-400 group-hover:border-cyan-400 group-hover:shadow-[0_0_12px_rgba(0,240,255,0.4)]'
             }`}>
-              <span className={`font-mono text-[11px] font-black tracking-tighter ${isTerminal ? 'text-[#00ff66]' : 'text-cyan-400'}`}>AFL</span>
+              <span className={`font-mono text-[11px] font-black tracking-tighter ${isTerminal ? 'text-[#ff7597]' : 'text-cyan-400'}`}>AFL</span>
             </div>
             <span className="font-mono text-sm tracking-wide text-white font-bold">
-              Lang<span className={isTerminal ? 'text-[#00ff66]' : 'text-cyan-400'}>gard</span>
+              Lang<span className={isTerminal ? 'text-[#ff7597]' : 'text-cyan-400'}>gard</span>
             </span>
           </a>
 
@@ -442,7 +442,7 @@ export default function App() {
             <a
               href="#about"
               className={`transition-colors whitespace-nowrap shrink-0 hover:underline underline-offset-8 ${
-                isTerminal ? 'hover:text-[#00ff66]' : 'hover:text-cyan-400'
+                isTerminal ? 'hover:text-[#ff7597]' : 'hover:text-cyan-400'
               }`}
             >
               About
@@ -450,7 +450,7 @@ export default function App() {
             <a
               href="#experience"
               className={`transition-colors whitespace-nowrap shrink-0 hover:underline underline-offset-8 ${
-                isTerminal ? 'hover:text-[#00ff66]' : 'hover:text-cyan-400'
+                isTerminal ? 'hover:text-[#ff7597]' : 'hover:text-cyan-400'
               }`}
             >
               Experience & Cyber
@@ -458,7 +458,7 @@ export default function App() {
             <a
               href="#projects"
               className={`transition-colors whitespace-nowrap shrink-0 hover:underline underline-offset-8 ${
-                isTerminal ? 'hover:text-[#00ff66]' : 'hover:text-cyan-400'
+                isTerminal ? 'hover:text-[#ff7597]' : 'hover:text-cyan-400'
               }`}
             >
               Projects & Research
@@ -466,7 +466,7 @@ export default function App() {
             <a
               href="#contact"
               className={`transition-colors whitespace-nowrap shrink-0 hover:underline underline-offset-8 ${
-                isTerminal ? 'hover:text-[#00ff66]' : 'hover:text-cyan-400'
+                isTerminal ? 'hover:text-[#ff7597]' : 'hover:text-cyan-400'
               }`}
             >
               Contact
@@ -479,22 +479,22 @@ export default function App() {
             <button
               type="button"
               onClick={toggleTheme}
-              aria-label={`Switch to ${isTerminal ? 'Cyber theme' : 'high-contrast Terminal Green theme'}`}
+              aria-label={`Switch to ${isTerminal ? 'Cyber theme' : 'high-contrast Terminal Red theme'}`}
               className={`px-2.5 sm:px-3 py-1.5 text-xs font-mono font-medium rounded-lg border transition-all duration-200 flex items-center gap-2 cursor-pointer ${
                 isTerminal
-                  ? 'bg-[#002b0c]/90 border-[#00ff66] text-[#00ff66] shadow-[0_0_12px_rgba(0,255,102,0.35)] hover:bg-[#003d12]'
+                  ? 'bg-[#2b0014]/90 border-[#ff7597] text-[#ff7597] shadow-[0_0_12px_rgba(255,117,151,0.35)] hover:bg-[#3d001d]'
                   : 'bg-cyan-950/60 border-cyan-500/40 text-cyan-300 shadow-[0_0_10px_rgba(0,240,255,0.18)] hover:border-cyan-400 hover:bg-cyan-900/60'
               }`}
-              title={isTerminal ? 'Active: Terminal Green (Click for Cyber Theme)' : 'Active: Cyber Theme (Click for Terminal Green)'}
+              title={isTerminal ? 'Active: Terminal Red (Click for Cyber Theme)' : 'Active: Cyber Theme (Click for Terminal Red)'}
             >
-              <Terminal className={`w-3.5 h-3.5 ${isTerminal ? 'text-[#00ff66]' : 'text-cyan-400'}`} />
+              <Terminal className={`w-3.5 h-3.5 ${isTerminal ? 'text-[#ff7597]' : 'text-cyan-400'}`} />
               <span className="hidden sm:inline font-semibold">
-                {isTerminal ? 'Terminal Green' : 'Cyber Theme'}
+                {isTerminal ? 'Terminal Red' : 'Cyber Theme'}
               </span>
               <span
                 className={`w-2 h-2 rounded-full transition-all ${
                   isTerminal
-                    ? 'bg-[#00ff66] shadow-[0_0_6px_#00ff66] animate-pulse'
+                    ? 'bg-[#ff7597] shadow-[0_0_6px_#ff7597] animate-pulse'
                     : 'bg-cyan-400 shadow-[0_0_6px_#00f0ff]'
                 }`}
               />
@@ -504,7 +504,7 @@ export default function App() {
               href="#contact"
               className={`px-3 sm:px-4 py-2 text-xs font-medium font-mono rounded-lg transition-all duration-200 whitespace-nowrap shrink-0 flex items-center gap-1.5 ${
                 isTerminal
-                  ? 'text-[#00ff66] bg-[#002b0c]/90 hover:bg-[#003d12] border border-[#00ff66]/50 hover:border-[#00ff66] hover:shadow-[0_0_15px_rgba(0,255,102,0.3)]'
+                  ? 'text-[#ff7597] bg-[#2b0014]/90 hover:bg-[#3d001d] border border-[#ff7597]/50 hover:border-[#ff7597] hover:shadow-[0_0_15px_rgba(255,117,151,0.3)]'
                   : 'text-cyan-300 bg-cyan-950/60 hover:bg-cyan-900/60 border border-cyan-500/40 hover:border-cyan-400 hover:shadow-[0_0_15px_rgba(0,240,255,0.25)]'
               }`}
             >
@@ -529,7 +529,7 @@ export default function App() {
                 <span className="text-slate-600" aria-hidden="true">·</span>
                 <span>Software Engineer</span>
                 <span className="text-slate-600" aria-hidden="true">·</span>
-                <span className="text-emerald-400 font-semibold">Cyber Security Specialist (BSSN Certified)</span>
+                <span className="text-indigo-400 font-semibold">Cyber Security Specialist (BSSN Certified)</span>
               </div>
 
               {/* Main Headline */}
@@ -604,7 +604,7 @@ export default function App() {
                       <h2 className="text-base font-bold text-white tracking-wide">Ahmad Fauzan Langga</h2>
                       <p className="text-xs font-mono text-cyan-400 flex items-center gap-1.5">
                         <span>@fauzanlangga</span>
-                        <span className="text-[10px] text-emerald-400 px-1.5 py-0.2 rounded bg-emerald-950/60 border border-emerald-500/30">
+                        <span className="text-[10px] text-indigo-400 px-1.5 py-0.2 rounded bg-indigo-950/60 border border-indigo-500/30">
                           BSSN Certified
                         </span>
                       </p>
@@ -616,7 +616,7 @@ export default function App() {
                   <div className="bg-[#05070a] border border-slate-800 rounded-xl p-3.5 font-mono text-xs text-slate-300 space-y-2">
                     <div className="flex items-center justify-between text-slate-500 text-[11px] border-b border-slate-800 pb-1.5">
                       <span>cyber_spec.json</span>
-                      <span className="text-emerald-400">ACTIVE // PENTEST_READY</span>
+                      <span className="text-indigo-400">ACTIVE // PENTEST_READY</span>
                     </div>
                     <p className="text-slate-300">
                       <span className="text-cyan-400 font-semibold">Specialty:</span> Penetration Testing (BSSN) & Secure Architecture
@@ -638,8 +638,8 @@ export default function App() {
 
           {/* Metric Strip Below Split */}
           <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div className="p-4 rounded-xl border border-emerald-500/30 bg-[#0d1017]/60">
-              <span className="text-2xl font-bold font-mono text-emerald-400 tabular-nums">BSSN</span>
+            <div className="p-4 rounded-xl border border-indigo-500/30 bg-[#0d1017]/60">
+              <span className="text-2xl font-bold font-mono text-indigo-400 tabular-nums">BSSN</span>
               <p className="text-xs text-slate-400 mt-1">Certified Junior Penetration Tester</p>
             </div>
             <div className="p-4 rounded-xl border border-cyan-500/30 bg-[#0d1017]/60">
@@ -673,8 +673,8 @@ export default function App() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm text-slate-300 leading-relaxed">
             {/* Pillar 1: Cyber Security */}
-            <div className="p-6 rounded-2xl border border-emerald-500/30 bg-[#0d1017]/80 space-y-3 relative overflow-hidden">
-              <div className="w-9 h-9 rounded-xl bg-emerald-950/70 border border-emerald-500/40 flex items-center justify-center text-emerald-400 mb-1">
+            <div className="p-6 rounded-2xl border border-indigo-500/30 bg-[#0d1017]/80 space-y-3 relative overflow-hidden">
+              <div className="w-9 h-9 rounded-xl bg-indigo-950/70 border border-indigo-500/40 flex items-center justify-center text-indigo-400 mb-1">
                 <ShieldCheck className="w-5 h-5" />
               </div>
               <h3 className="text-base font-semibold text-white">
@@ -683,7 +683,7 @@ export default function App() {
               <p className="text-xs text-slate-300">
                 Holder of the official <strong>Junior Penetration Tester certification from BSSN</strong> (National Cyber and Crypto Agency). Specializing in vulnerability assessments, ethical exploitation, OWASP Top 10 web app testing, and defensive system hardening.
               </p>
-              <div className="pt-2 text-[11px] font-mono text-emerald-400">
+              <div className="pt-2 text-[11px] font-mono text-indigo-400">
                 BSSN Certified · OWASP Top 10 · AppSec
               </div>
             </div>
@@ -899,7 +899,7 @@ export default function App() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1 text-xs">
               <div className="p-3 rounded-xl border border-slate-800 bg-[#05070a]/80 flex items-center justify-between">
                 <div>
-                  <span className="text-[10px] font-mono text-emerald-400 font-semibold">CERTIFICATE</span>
+                  <span className="text-[10px] font-mono text-indigo-400 font-semibold">CERTIFICATE</span>
                   <h5 className="font-bold text-white text-xs">Partner: NDG Linux Essentials</h5>
                   <p className="text-[11px] text-slate-400">Issued: Jul 07, 2021 · NDG & Cisco Academy</p>
                 </div>
@@ -924,7 +924,7 @@ export default function App() {
                 key={exp.id}
                 className={`p-5 rounded-2xl border transition-all flex flex-col justify-between group ${
                   exp.type === 'cyber'
-                    ? 'border-emerald-500/40 bg-emerald-950/15 hover:border-emerald-400'
+                    ? 'border-indigo-500/40 bg-indigo-950/15 hover:border-indigo-400'
                     : 'border-slate-800 hover:border-cyan-500/30 bg-[#0d1017]/70 hover:bg-[#0d1017]'
                 }`}
               >
@@ -933,13 +933,13 @@ export default function App() {
                     <div>
                       <div className="flex items-center gap-2">
                         {exp.type === 'cyber' && (
-                          <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
+                          <ShieldCheck className="w-4 h-4 text-indigo-400 shrink-0" />
                         )}
                         <h3 className="text-base font-bold text-white group-hover:text-cyan-300 transition-colors">
                           {exp.role}
                         </h3>
                       </div>
-                      <p className={`text-xs font-mono mt-0.5 ${exp.type === 'cyber' ? 'text-emerald-400 font-semibold' : 'text-cyan-400'}`}>
+                      <p className={`text-xs font-mono mt-0.5 ${exp.type === 'cyber' ? 'text-indigo-400 font-semibold' : 'text-cyan-400'}`}>
                         {exp.organization}
                       </p>
                     </div>
@@ -959,7 +959,7 @@ export default function App() {
                 <div className="pt-4 mt-3 border-t border-slate-800/80 flex flex-wrap items-center gap-2 text-[11px] text-slate-400">
                   {exp.tags.map((tag, idx) => (
                     <React.Fragment key={tag}>
-                      <span className={exp.type === 'cyber' ? 'text-emerald-300 font-mono' : 'text-slate-300'}>
+                      <span className={exp.type === 'cyber' ? 'text-indigo-300 font-mono' : 'text-slate-300'}>
                         {tag}
                       </span>
                       {idx < exp.tags.length - 1 && <span className="text-slate-600" aria-hidden="true">·</span>}
@@ -999,7 +999,7 @@ export default function App() {
                 onClick={() => setProjectFilter('cyber')}
                 className={`px-3 py-1.5 text-xs font-mono rounded-lg transition-colors ${
                   projectFilter === 'cyber'
-                    ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40'
+                    ? 'bg-indigo-500/20 text-indigo-300 border border-indigo-500/40'
                     : 'text-slate-400 hover:text-white'
                 }`}
               >
@@ -1035,14 +1035,14 @@ export default function App() {
                 key={project.id}
                 className={`group relative rounded-2xl border transition-all duration-300 ease-out overflow-hidden flex flex-col justify-between hover:-translate-y-1.5 cursor-pointer ${
                   project.category === 'cyber'
-                    ? 'border-emerald-500/30 hover:border-emerald-400 hover:shadow-[0_0_30px_rgba(16,185,129,0.35)] bg-[#0d1017]/90 hover:bg-[#0e131d]'
+                    ? 'border-indigo-500/30 hover:border-indigo-400 hover:shadow-[0_0_30px_rgba(99,102,241,0.35)] bg-[#0d1017]/90 hover:bg-[#0e131d]'
                     : 'border-slate-800 hover:border-cyan-400 hover:shadow-[0_0_30px_rgba(0,240,255,0.35)] bg-[#0d1017]/80 hover:bg-[#0c121e]'
                 }`}
               >
                 {/* Cyber Card Top Glow Hairline */}
                 <div className={`absolute top-0 inset-x-0 h-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 ${
                   project.category === 'cyber'
-                    ? 'bg-gradient-to-r from-transparent via-emerald-400 to-transparent'
+                    ? 'bg-gradient-to-r from-transparent via-indigo-400 to-transparent'
                     : 'bg-gradient-to-r from-transparent via-cyan-400 to-transparent'
                 }`} />
 
@@ -1063,7 +1063,7 @@ export default function App() {
                     <div className="absolute top-3 left-3">
                       <span className={`text-[10px] font-mono font-semibold uppercase px-2 py-0.5 rounded backdrop-blur ${
                         project.category === 'cyber'
-                          ? 'bg-emerald-950/80 text-emerald-300 border border-emerald-500/40'
+                          ? 'bg-indigo-950/80 text-indigo-300 border border-indigo-500/40'
                           : 'bg-black/75 text-cyan-300 border border-cyan-500/30'
                       }`}>
                         {project.categoryLabel}
@@ -1120,7 +1120,7 @@ export default function App() {
                         <ExternalLink className="w-3 h-3 text-cyan-500" />
                       </a>
                     ) : (
-                      <span className="text-[10px] font-mono text-emerald-400 px-2 py-0.5 rounded bg-emerald-950/40 border border-emerald-500/20">
+                      <span className="text-[10px] font-mono text-indigo-400 px-2 py-0.5 rounded bg-indigo-950/40 border border-indigo-500/20">
                         BSSN Lab
                       </span>
                     )}
@@ -1202,23 +1202,23 @@ export default function App() {
               <form
                 onSubmit={handleContactSubmit}
                 className={`p-6 rounded-2xl border bg-[#0d1017]/90 space-y-4 transition-colors ${
-                  isTerminal ? 'border-[#00ff66]/30 shadow-[0_0_30px_rgba(0,255,102,0.05)]' : 'border-slate-800'
+                  isTerminal ? 'border-[#ff7597]/30 shadow-[0_0_30px_rgba(255,117,151,0.06)]' : 'border-slate-800'
                 }`}
               >
                 {formStatus === 'success' && (
-                  <div className="p-4 rounded-xl bg-emerald-950/70 border border-emerald-500/50 text-emerald-200 text-xs space-y-2 animate-in fade-in">
+                  <div className="p-4 rounded-xl bg-indigo-950/70 border border-indigo-500/50 text-indigo-200 text-xs space-y-2 animate-in fade-in">
                     <div className="flex items-start gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
+                      <CheckCircle2 className="w-5 h-5 text-indigo-400 shrink-0 mt-0.5" />
                       <div className="space-y-1">
                         <p className="font-semibold text-white">Pesan Berhasil Terkirim!</p>
-                        <p className="text-emerald-300/90 leading-relaxed">{formFeedback}</p>
+                        <p className="text-indigo-300/90 leading-relaxed">{formFeedback}</p>
                       </div>
                     </div>
                     <div className="pt-2 flex items-center justify-end">
                       <button
                         type="button"
                         onClick={() => setFormStatus('idle')}
-                        className="text-[11px] font-mono text-emerald-300 hover:text-white underline underline-offset-2"
+                        className="text-[11px] font-mono text-indigo-300 hover:text-white underline underline-offset-2"
                       >
                         Kirim pesan lainnya &rarr;
                       </button>
@@ -1240,7 +1240,7 @@ export default function App() {
                         href={`mailto:fauzanlangga54@gmail.com?subject=${encodeURIComponent(`Project Inquiry - ${formName || 'Portfolio Visitor'}`)}&body=${encodeURIComponent(formMessage || '')}`}
                         className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition ${
                           isTerminal 
-                            ? 'bg-[#00ff66]/20 border border-[#00ff66]/40 text-[#00ff66] hover:bg-[#00ff66]/30'
+                            ? 'bg-[#ff7597]/20 border border-[#ff7597]/40 text-[#ff7597] hover:bg-[#ff7597]/30'
                             : 'bg-cyan-950 border border-cyan-500/40 text-cyan-300 hover:bg-cyan-900'
                         }`}
                       >
@@ -1252,7 +1252,7 @@ export default function App() {
                 )}
 
                 <div className="space-y-1.5">
-                  <label htmlFor="contact-name" className={`text-xs font-mono ${isTerminal ? 'text-[#00ff66]' : 'text-slate-300'}`}>
+                  <label htmlFor="contact-name" className={`text-xs font-mono ${isTerminal ? 'text-[#ff7597]' : 'text-slate-300'}`}>
                     Nama Lengkap / Full Name <span className="text-red-400">*</span>
                   </label>
                   <input
@@ -1264,14 +1264,14 @@ export default function App() {
                     onChange={(e) => setFormName(e.target.value)}
                     className={`w-full bg-[#05070a] border rounded-xl px-4 py-2.5 text-xs text-slate-100 placeholder-slate-600 focus:outline-none transition ${
                       isTerminal
-                        ? 'border-[#00ff66]/30 focus:border-[#00ff66] focus:ring-1 focus:ring-[#00ff66]/30'
+                        ? 'border-[#ff7597]/30 focus:border-[#ff7597] focus:ring-1 focus:ring-[#ff7597]/30'
                         : 'border-slate-800 focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/30'
                     }`}
                   />
                 </div>
 
                 <div className="space-y-1.5">
-                  <label htmlFor="contact-email" className={`text-xs font-mono ${isTerminal ? 'text-[#00ff66]' : 'text-slate-300'}`}>
+                  <label htmlFor="contact-email" className={`text-xs font-mono ${isTerminal ? 'text-[#ff7597]' : 'text-slate-300'}`}>
                     Alamat Email / Email Address <span className="text-red-400">*</span>
                   </label>
                   <input
@@ -1283,14 +1283,14 @@ export default function App() {
                     onChange={(e) => setFormEmail(e.target.value)}
                     className={`w-full bg-[#05070a] border rounded-xl px-4 py-2.5 text-xs text-slate-100 placeholder-slate-600 focus:outline-none transition ${
                       isTerminal
-                        ? 'border-[#00ff66]/30 focus:border-[#00ff66] focus:ring-1 focus:ring-[#00ff66]/30'
+                        ? 'border-[#ff7597]/30 focus:border-[#ff7597] focus:ring-1 focus:ring-[#ff7597]/30'
                         : 'border-slate-800 focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/30'
                     }`}
                   />
                 </div>
 
                 <div className="space-y-1.5">
-                  <label htmlFor="contact-message" className={`text-xs font-mono ${isTerminal ? 'text-[#00ff66]' : 'text-slate-300'}`}>
+                  <label htmlFor="contact-message" className={`text-xs font-mono ${isTerminal ? 'text-[#ff7597]' : 'text-slate-300'}`}>
                     Pesan / Project Inquiry / Cybersecurity Scope <span className="text-red-400">*</span>
                   </label>
                   <textarea
@@ -1302,7 +1302,7 @@ export default function App() {
                     onChange={(e) => setFormMessage(e.target.value)}
                     className={`w-full bg-[#05070a] border rounded-xl px-4 py-2.5 text-xs text-slate-100 placeholder-slate-600 focus:outline-none transition resize-none ${
                       isTerminal
-                        ? 'border-[#00ff66]/30 focus:border-[#00ff66] focus:ring-1 focus:ring-[#00ff66]/30'
+                        ? 'border-[#ff7597]/30 focus:border-[#ff7597] focus:ring-1 focus:ring-[#ff7597]/30'
                         : 'border-slate-800 focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/30'
                     }`}
                   />
@@ -1313,7 +1313,7 @@ export default function App() {
                   disabled={formStatus === 'loading'}
                   className={`w-full py-3 font-bold font-mono text-xs rounded-xl transition-all flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed ${
                     isTerminal
-                      ? 'bg-[#00ff66] hover:bg-[#33ff85] text-black shadow-[0_0_20px_rgba(0,255,102,0.35)]'
+                      ? 'bg-[#ff7597] hover:bg-[#ff8fa9] text-black shadow-[0_0_20px_rgba(255,117,151,0.35)]'
                       : 'bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-black shadow-[0_0_20px_rgba(0,240,255,0.3)]'
                   }`}
                 >
