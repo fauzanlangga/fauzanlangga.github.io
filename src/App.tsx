@@ -7,8 +7,6 @@ import {
   Instagram,
   Mail,
   Send,
-  Plus,
-  Trash2,
   CheckCircle2,
   AlertCircle,
   Eye,
@@ -144,23 +142,7 @@ export default function App() {
     }
   ];
 
-  const [experiences, setExperiences] = useState<Experience[]>(() => {
-    try {
-      const saved = localStorage.getItem('langgard_experiences_en');
-      return saved ? JSON.parse(saved) : initialExperiences;
-    } catch {
-      return initialExperiences;
-    }
-  });
-
-  // Modal add experience
-  const [showAddExpModal, setShowAddExpModal] = useState(false);
-  const [newExpRole, setNewExpRole] = useState('');
-  const [newExpOrg, setNewExpOrg] = useState('');
-  const [newExpPeriod, setNewExpPeriod] = useState('');
-  const [newExpDesc, setNewExpDesc] = useState('');
-  const [newExpTags, setNewExpTags] = useState('');
-  const [newExpType, setNewExpType] = useState<'cyber' | 'work' | 'organization' | 'education' | 'certification'>('cyber');
+  const experiences: Experience[] = initialExperiences;
 
   // Filter projects
   const [projectFilter, setProjectFilter] = useState<'all' | 'cyber' | 'web' | 'content'>('all');
@@ -206,37 +188,6 @@ export default function App() {
     }
   }, [isTerminal]);
 
-  // Save experiences to localStorage
-  useEffect(() => {
-    localStorage.setItem('langgard_experiences_en', JSON.stringify(experiences));
-  }, [experiences]);
-
-  const handleAddExperience = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!newExpRole.trim() || !newExpOrg.trim()) return;
-
-    const newEntry: Experience = {
-      id: `exp-${Date.now()}`,
-      role: newExpRole.trim(),
-      organization: newExpOrg.trim(),
-      period: newExpPeriod.trim() || '2024 — Present',
-      description: newExpDesc.trim() || 'Professional contribution and technical skill growth.',
-      tags: newExpTags ? newExpTags.split(',').map(t => t.trim()).filter(Boolean) : ['Cyber Security'],
-      type: newExpType
-    };
-
-    setExperiences([newEntry, ...experiences]);
-    setShowAddExpModal(false);
-    setNewExpRole('');
-    setNewExpOrg('');
-    setNewExpPeriod('');
-    setNewExpDesc('');
-    setNewExpTags('');
-  };
-
-  const handleDeleteExperience = (id: string) => {
-    setExperiences(experiences.filter(exp => exp.id !== id));
-  };
 
   // Projects data
   const projects: Project[] = [
@@ -734,26 +685,16 @@ export default function App() {
 
         {/* EXPERIENCE SECTION */}
         <section id="experience" className="space-y-6 scroll-mt-24">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-            <div className="space-y-2">
-              <div className="flex items-center gap-2 text-xs font-mono text-cyan-400">
-                <span>02. CAREER TRACK, CYBER & CREDENTIALS</span>
-              </div>
-              <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
-                Experience & Professional Certifications
-              </h2>
-              <p className="text-xs text-slate-400">
-                Including official BSSN Junior Penetration Tester certification, verified Cisco NetAcad credentials, and leadership records.
-              </p>
+          <div className="space-y-2">
+            <div className="flex items-center gap-2 text-xs font-mono text-cyan-400">
+              <span>02. CAREER TRACK, CYBER & CREDENTIALS</span>
             </div>
-
-            <button
-              onClick={() => setShowAddExpModal(true)}
-              className="px-4 py-2 text-xs font-mono font-medium rounded-lg bg-cyan-950/70 border border-cyan-500/40 hover:border-cyan-400 text-cyan-300 hover:text-white transition flex items-center gap-2 self-start sm:self-auto shrink-0"
-            >
-              <Plus className="w-4 h-4 text-cyan-400" />
-              <span>Add Experience</span>
-            </button>
+            <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+              Experience & Professional Certifications
+            </h2>
+            <p className="text-xs text-slate-400">
+              Including official BSSN Junior Penetration Tester certification, verified Cisco NetAcad credentials, and leadership records.
+            </p>
           </div>
 
           {/* Cisco Networking Academy & Credly Official Badges Showcase */}
@@ -963,17 +904,10 @@ export default function App() {
                         {exp.organization}
                       </p>
                     </div>
-                    <div className="flex items-center gap-2 shrink-0">
+                    <div className="shrink-0">
                       <span className="text-[11px] font-mono text-slate-400">
                         {exp.period}
                       </span>
-                      <button
-                        onClick={() => handleDeleteExperience(exp.id)}
-                        title="Delete this record"
-                        className="opacity-0 group-hover:opacity-100 p-1 text-slate-500 hover:text-red-400 transition"
-                      >
-                        <Trash2 className="w-3.5 h-3.5" />
-                      </button>
                     </div>
                   </div>
 
@@ -1342,117 +1276,6 @@ export default function App() {
         </div>
       </footer>
 
-      {/* MODAL: Add New Experience */}
-      {showAddExpModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-200">
-          <div className="bg-[#0c0e15] border border-cyan-500/40 rounded-2xl max-w-lg w-full p-6 shadow-2xl space-y-4">
-            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
-              <h3 className="text-base font-bold text-white flex items-center gap-2">
-                <Plus className="w-4 h-4 text-cyan-400" />
-                <span>Add New Experience / Certification</span>
-              </h3>
-              <button
-                onClick={() => setShowAddExpModal(false)}
-                className="text-slate-400 hover:text-white"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-
-            <form onSubmit={handleAddExperience} className="space-y-3 text-xs">
-              <div>
-                <label className="block text-slate-300 font-mono mb-1">Role / Position Title</label>
-                <input
-                  type="text"
-                  required
-                  placeholder="e.g. Cyber Security Analyst"
-                  value={newExpRole}
-                  onChange={(e) => setNewExpRole(e.target.value)}
-                  className="w-full bg-[#05070a] border border-slate-800 rounded-lg px-3 py-2 text-slate-100 focus:outline-none focus:border-cyan-400"
-                />
-              </div>
-
-              <div>
-                <label className="block text-slate-300 font-mono mb-1">Organization / Company / Authority</label>
-                <input
-                  type="text"
-                  required
-                  placeholder="e.g. National Cyber and Crypto Agency"
-                  value={newExpOrg}
-                  onChange={(e) => setNewExpOrg(e.target.value)}
-                  className="w-full bg-[#05070a] border border-slate-800 rounded-lg px-3 py-2 text-slate-100 focus:outline-none focus:border-cyan-400"
-                />
-              </div>
-
-              <div className="grid grid-cols-2 gap-3">
-                <div>
-                  <label className="block text-slate-300 font-mono mb-1">Period / Year</label>
-                  <input
-                    type="text"
-                    placeholder="e.g. 2024 — Certified"
-                    value={newExpPeriod}
-                    onChange={(e) => setNewExpPeriod(e.target.value)}
-                    className="w-full bg-[#05070a] border border-slate-800 rounded-lg px-3 py-2 text-slate-100 focus:outline-none focus:border-cyan-400"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-slate-300 font-mono mb-1">Category</label>
-                  <select
-                    value={newExpType}
-                    onChange={(e) => setNewExpType(e.target.value as any)}
-                    className="w-full bg-[#05070a] border border-slate-800 rounded-lg px-3 py-2 text-slate-100 focus:outline-none focus:border-cyan-400"
-                  >
-                    <option value="cyber">Cyber Security / Pentest</option>
-                    <option value="work">Work Experience</option>
-                    <option value="organization">Leadership & Organization</option>
-                    <option value="education">Education & Training</option>
-                    <option value="certification">Professional Certification</option>
-                  </select>
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-slate-300 font-mono mb-1">Summary Description</label>
-                <textarea
-                  rows={3}
-                  placeholder="Briefly describe key responsibilities, achievements, or competencies..."
-                  value={newExpDesc}
-                  onChange={(e) => setNewExpDesc(e.target.value)}
-                  className="w-full bg-[#05070a] border border-slate-800 rounded-lg px-3 py-2 text-slate-100 focus:outline-none focus:border-cyan-400 resize-none"
-                />
-              </div>
-
-              <div>
-                <label className="block text-slate-300 font-mono mb-1">Skills & Tags (comma separated)</label>
-                <input
-                  type="text"
-                  placeholder="e.g. Penetration Testing, OWASP Top 10, Network Security"
-                  value={newExpTags}
-                  onChange={(e) => setNewExpTags(e.target.value)}
-                  className="w-full bg-[#05070a] border border-slate-800 rounded-lg px-3 py-2 text-slate-100 focus:outline-none focus:border-cyan-400"
-                />
-              </div>
-
-              <div className="pt-3 flex justify-end gap-2">
-                <button
-                  type="button"
-                  onClick={() => setShowAddExpModal(false)}
-                  className="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg"
-                >
-                  Cancel
-                </button>
-                <button
-                  type="submit"
-                  className="px-4 py-2 bg-cyan-400 hover:bg-cyan-300 text-black font-semibold rounded-lg font-mono"
-                >
-                  Save Experience
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      )}
 
       {/* MODAL: Project Lightbox */}
       {selectedProject && (
