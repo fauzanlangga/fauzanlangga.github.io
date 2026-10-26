@@ -420,21 +420,17 @@ export default function App() {
           : 'bg-[#07090e]/85 border-cyan-500/15'
       }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3 sm:gap-6">
-          {/* Zone 1: Brand Wordmark with GitHub-style Toolbar Container Background */}
+          {/* Zone 1: Brand Wordmark */}
           <a
             href="#home"
-            className={`flex items-center gap-2.5 px-3 py-1.5 rounded-xl border transition-all duration-200 group ${
-              isTerminal
-                ? 'bg-[#18050f]/90 hover:bg-[#28081a] border-[#ff7597]/35 hover:border-[#ff7597] shadow-[0_0_15px_rgba(255,117,151,0.12)] hover:shadow-[0_0_20px_rgba(255,117,151,0.25)]'
-                : 'bg-[#0e131d]/90 hover:bg-[#141b2a] border-slate-800 hover:border-cyan-500/50 shadow-[0_0_15px_rgba(0,240,255,0.06)] hover:shadow-[0_0_20px_rgba(0,240,255,0.2)]'
-            }`}
+            className="flex items-center gap-2.5 text-base font-bold tracking-tight text-white whitespace-nowrap shrink-0 group"
           >
-            <div className={`w-7 h-7 rounded-lg flex items-center justify-center transition-all ${
+            <div className={`w-8 h-8 rounded-lg flex items-center justify-center transition-all ${
               isTerminal
-                ? 'bg-[#2b0014] border border-[#ff7597]/60 text-[#ff7597] group-hover:border-[#ff7597] group-hover:shadow-[0_0_10px_rgba(255,117,151,0.5)]'
-                : 'bg-cyan-950/80 border border-cyan-500/40 text-cyan-400 group-hover:border-cyan-400 group-hover:shadow-[0_0_10px_rgba(0,240,255,0.4)]'
+                ? 'bg-[#2b0014] border border-[#ff7597]/50 text-[#ff7597] group-hover:border-[#ff7597] group-hover:shadow-[0_0_12px_rgba(255,117,151,0.5)]'
+                : 'bg-cyan-950/80 border border-cyan-500/40 text-cyan-400 group-hover:border-cyan-400 group-hover:shadow-[0_0_12px_rgba(0,240,255,0.4)]'
             }`}>
-              <span className={`font-mono text-[10px] font-black tracking-tighter ${isTerminal ? 'text-[#ff7597]' : 'text-cyan-400'}`}>AFL</span>
+              <span className={`font-mono text-[11px] font-black tracking-tighter ${isTerminal ? 'text-[#ff7597]' : 'text-cyan-400'}`}>AFL</span>
             </div>
             <span className="font-mono text-sm tracking-wide text-white font-bold">
               Lang<span className={isTerminal ? 'text-[#ff7597]' : 'text-cyan-400'}>gard</span>
@@ -477,25 +473,8 @@ export default function App() {
             </a>
           </nav>
 
-          {/* Zone 3: Primary Action, GitHub & Theme Toggle */}
-          <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
-            {/* GitHub Profile Button (GitHub-style Toolbar Button) */}
-            <a
-              href="https://github.com/fauzanlangga"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="GitHub Profile"
-              className={`p-2 sm:px-2.5 sm:py-1.5 text-xs font-mono font-medium rounded-lg border transition-all duration-200 flex items-center gap-1.5 ${
-                isTerminal
-                  ? 'bg-[#18050f]/90 hover:bg-[#28081a] border-[#ff7597]/35 hover:border-[#ff7597] text-[#fca5c3] hover:text-white shadow-[0_0_10px_rgba(255,117,151,0.15)]'
-                  : 'bg-[#0e131d]/90 hover:bg-[#141b2a] border-slate-800 hover:border-cyan-500/50 text-slate-300 hover:text-white shadow-[0_0_10px_rgba(0,240,255,0.08)]'
-              }`}
-              title="GitHub Profile (@fauzanlangga)"
-            >
-              <Github className="w-3.5 h-3.5 text-slate-300 group-hover:text-white" />
-              <span className="hidden sm:inline">GitHub</span>
-            </a>
-
+          {/* Zone 3: Primary Action & Theme Toggle */}
+          <div className="flex items-center gap-2.5 sm:gap-3 shrink-0">
             {/* Theme Toggle Button */}
             <button
               type="button"
