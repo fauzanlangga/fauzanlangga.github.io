@@ -420,19 +420,28 @@ export default function App() {
           : 'bg-[#07090e]/85 border-cyan-500/15'
       }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3 sm:gap-6">
-          {/* Zone 1: Brand Wordmark */}
+          {/* Zone 1: Brand Wordmark with Official Langgard Logo */}
           <a
             href="#home"
             className="flex items-center gap-2.5 text-base font-bold tracking-tight text-white whitespace-nowrap shrink-0 group"
           >
-            <div className={`w-8 h-8 rounded-lg flex items-center justify-center transition-all ${
+            <div className={`w-9 h-9 rounded-xl overflow-hidden p-0.5 border transition-all duration-300 flex items-center justify-center ${
               isTerminal
-                ? 'bg-[#2b0014] border border-[#ff7597]/50 text-[#ff7597] group-hover:border-[#ff7597] group-hover:shadow-[0_0_12px_rgba(255,117,151,0.5)]'
-                : 'bg-cyan-950/80 border border-cyan-500/40 text-cyan-400 group-hover:border-cyan-400 group-hover:shadow-[0_0_12px_rgba(0,240,255,0.4)]'
+                ? 'bg-[#2b0014]/80 border-[#ff7597]/60 shadow-[0_0_12px_rgba(255,117,151,0.4)] group-hover:border-[#ff7597] group-hover:shadow-[0_0_18px_rgba(255,117,151,0.65)]'
+                : 'bg-[#0a0f1d]/80 border-cyan-500/50 shadow-[0_0_12px_rgba(0,240,255,0.3)] group-hover:border-cyan-400 group-hover:shadow-[0_0_18px_rgba(0,240,255,0.55)]'
             }`}>
-              <span className={`font-mono text-[11px] font-black tracking-tighter ${isTerminal ? 'text-[#ff7597]' : 'text-cyan-400'}`}>AFL</span>
+              <img
+                src={isTerminal ? '/img/langgard-logo-terminal.png' : '/img/langgard-logo-cyber.png'}
+                alt="Langgard Logo"
+                className="w-full h-full object-cover rounded-[9px] transition-transform duration-300 group-hover:scale-105"
+                onError={(e) => {
+                  const target = e.currentTarget;
+                  target.onerror = null;
+                  target.src = '/public/assets/aistudio/image_b24b4d51.png';
+                }}
+              />
             </div>
-            <span className="font-mono text-sm tracking-wide text-white font-bold">
+            <span className="font-mono text-sm sm:text-base tracking-wide text-white font-bold">
               Lang<span className={isTerminal ? 'text-[#ff7597]' : 'text-cyan-400'}>gard</span>
             </span>
           </a>
@@ -1338,9 +1347,21 @@ export default function App() {
       {/* FOOTER */}
       <footer className="border-t border-slate-800/80 bg-[#05070a] py-8 mt-24 text-center text-xs text-slate-500">
         <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="font-mono text-slate-400">
-            © {new Date().getFullYear()} Ahmad Fauzan Langga. Content Creator · Software Engineer · Cyber Security Specialist.
-          </p>
+          <div className="flex items-center gap-2.5">
+            <img
+              src={isTerminal ? '/img/langgard-logo-terminal.png' : '/img/langgard-logo-cyber.png'}
+              alt="Langgard Logo"
+              className="w-5 h-5 rounded-md object-cover border border-slate-800"
+              onError={(e) => {
+                const target = e.currentTarget;
+                target.onerror = null;
+                target.src = '/public/assets/aistudio/image_b24b4d51.png';
+              }}
+            />
+            <p className="font-mono text-slate-400">
+              © {new Date().getFullYear()} Ahmad Fauzan Langga. Content Creator · Software Engineer · Cyber Security Specialist.
+            </p>
+          </div>
           <div className="flex items-center gap-4">
             <a
               href="https://github.com/fauzanlangga"
