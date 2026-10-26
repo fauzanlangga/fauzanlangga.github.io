@@ -15,6 +15,7 @@ import {
   Terminal,
   Loader2
 } from 'lucide-react';
+import { LanggardLogo } from './components/LanggardLogo';
 
 interface Experience {
   id: string;
@@ -425,20 +426,10 @@ export default function App() {
             href="#home"
             className="flex items-center gap-2.5 text-base font-bold tracking-tight text-white whitespace-nowrap shrink-0 group"
           >
-            <div className={`w-9 h-9 rounded-xl overflow-hidden p-0.5 border transition-all duration-300 flex items-center justify-center ${
-              isTerminal
-                ? 'bg-[#2b0014]/80 border-[#ff7597]/60 shadow-[0_0_12px_rgba(255,117,151,0.4)] group-hover:border-[#ff7597] group-hover:shadow-[0_0_18px_rgba(255,117,151,0.65)]'
-                : 'bg-[#0a0f1d]/80 border-cyan-500/50 shadow-[0_0_12px_rgba(0,240,255,0.3)] group-hover:border-cyan-400 group-hover:shadow-[0_0_18px_rgba(0,240,255,0.55)]'
-            }`}>
-              <img
-                src={isTerminal ? '/img/langgard-logo-terminal.png' : '/img/langgard-logo-cyber.png'}
-                alt="Langgard Logo"
-                className="w-full h-full object-cover rounded-[9px] transition-transform duration-300 group-hover:scale-105"
-                onError={(e) => {
-                  const target = e.currentTarget;
-                  target.onerror = null;
-                  target.src = '/public/assets/aistudio/image_b24b4d51.png';
-                }}
+            <div className="relative flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
+              <LanggardLogo
+                className="w-8 h-8 sm:w-9 sm:h-9"
+                isTerminal={isTerminal}
               />
             </div>
             <span className="font-mono text-sm sm:text-base tracking-wide text-white font-bold">
@@ -1348,16 +1339,7 @@ export default function App() {
       <footer className="border-t border-slate-800/80 bg-[#05070a] py-8 mt-24 text-center text-xs text-slate-500">
         <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2.5">
-            <img
-              src={isTerminal ? '/img/langgard-logo-terminal.png' : '/img/langgard-logo-cyber.png'}
-              alt="Langgard Logo"
-              className="w-5 h-5 rounded-md object-cover border border-slate-800"
-              onError={(e) => {
-                const target = e.currentTarget;
-                target.onerror = null;
-                target.src = '/public/assets/aistudio/image_b24b4d51.png';
-              }}
-            />
+            <LanggardLogo className="w-5 h-5 shrink-0" isTerminal={isTerminal} />
             <p className="font-mono text-slate-400">
               © {new Date().getFullYear()} Ahmad Fauzan Langga. Content Creator · Software Engineer · Cyber Security Specialist.
             </p>

@@ -1,54 +1,45 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
   <defs>
-    <!-- Background Gradient -->
-    <linearGradient id="cyberBg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#050811" />
-      <stop offset="50%" stop-color="#0c121e" />
-      <stop offset="100%" stop-color="#070a12" />
-    </linearGradient>
-
-    <!-- Neon Glow Gradient for AFL Monogram -->
-    <linearGradient id="aflGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+    <!-- Cyber Theme Gradients -->
+    <linearGradient id="favCyberDiag" x1="25%" y1="85%" x2="70%" y2="25%">
       <stop offset="0%" stop-color="#00f0ff" />
-      <stop offset="60%" stop-color="#38bdf8" />
-      <stop offset="100%" stop-color="#10b981" />
+      <stop offset="55%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#60a5fa" />
     </linearGradient>
 
-    <!-- Cyber Border Glow Filter -->
-    <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="3" result="blur" />
-      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    <linearGradient id="favCyberRight" x1="30%" y1="30%" x2="85%" y2="85%">
+      <stop offset="0%" stop-color="#2563eb" />
+      <stop offset="45%" stop-color="#4f46e5" />
+      <stop offset="100%" stop-color="#9333ea" />
+    </linearGradient>
+
+    <filter id="favShadow" x="-20%" y="-20%" width="160%" height="160%">
+      <feDropShadow dx="2" dy="1.5" stdDeviation="2" flood-color="#000000" flood-opacity="0.6" />
     </filter>
   </defs>
 
-  <!-- Outer Cyber Container with Chamfered Corners -->
-  <rect x="6" y="6" width="116" height="116" rx="26" fill="url(#cyberBg)" stroke="#00f0ff" stroke-width="3" stroke-opacity="0.85" />
-  
-  <!-- Subtle Inner Border -->
-  <rect x="12" y="12" width="104" height="104" rx="20" fill="none" stroke="#00f0ff" stroke-width="1" stroke-opacity="0.2" />
+  <!-- Right 't' / 'L' Structure -->
+  <path
+    d="M 48.5 52 L 64 52"
+    stroke="url(#favCyberRight)"
+    stroke-width="11"
+    stroke-linecap="round"
+  />
+  <path
+    d="M 48.5 35 L 48.5 61 Q 48.5 68.5 56 68.5 L 68.5 68.5"
+    stroke="url(#favCyberRight)"
+    stroke-width="11"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
 
-  <!-- Corner Laser Accents -->
-  <path d="M 14 30 L 14 16 L 30 16" fill="none" stroke="#00f0ff" stroke-width="3.5" stroke-linecap="round" />
-  <path d="M 114 30 L 114 16 L 98 16" fill="none" stroke="#00f0ff" stroke-width="3.5" stroke-linecap="round" />
-  <path d="M 14 98 L 14 112 L 30 112" fill="none" stroke="#10b981" stroke-width="3.5" stroke-linecap="round" />
-  <path d="M 114 98 L 114 112 L 98 112" fill="none" stroke="#10b981" stroke-width="3.5" stroke-linecap="round" />
-
-  <!-- Center Monogram AFL -->
-  <g filter="url(#neonGlow)">
-    <text 
-      x="64" 
-      y="77" 
-      text-anchor="middle" 
-      font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Arial Black', sans-serif" 
-      font-weight="900" 
-      font-size="46" 
-      letter-spacing="-1.5" 
-      fill="url(#aflGrad)"
-    >AFL</text>
+  <!-- Left Slanted Pillar -->
+  <g filter="url(#favShadow)">
+    <path
+      d="M 33 68.5 L 49 32"
+      stroke="url(#favCyberDiag)"
+      stroke-width="11"
+      stroke-linecap="round"
+    />
   </g>
-
-  <!-- Sub-label dot indicator / status -->
-  <circle cx="64" cy="98" r="3.5" fill="#00f0ff" />
-  <circle cx="52" cy="98" r="2" fill="#10b981" opacity="0.6" />
-  <circle cx="76" cy="98" r="2" fill="#10b981" opacity="0.6" />
 </svg>
