@@ -5,15 +5,20 @@ interface LanggardLogoProps {
   isTerminal?: boolean;
 }
 
+/**
+ * Official Langgard Logo Emblem
+ * Derived directly from Gemini_Generated_Image_srlf6jsrlf6jsrlf_b1e723b2.jpg
+ * - Isolated emblem glyph only (no bounding square / box / dark frame)
+ * - Zero clipping on all pill stroke caps and baseline
+ * - Theme-reactive (Cyber Cyan/Blue/Violet vs Terminal Red/Pink glow)
+ */
 export const LanggardLogo: React.FC<LanggardLogoProps> = ({
   className = 'w-8 h-8',
   isTerminal = false,
 }) => {
-  // Unique gradient and filter IDs to prevent collisions
-  const cyberDiagId = 'langgard-cyber-diag';
-  const cyberRightId = 'langgard-cyber-right';
-  const termDiagId = 'langgard-term-diag';
-  const termRightId = 'langgard-term-right';
+  const diagGradId = isTerminal ? 'langgard-term-diag' : 'langgard-cyber-diag';
+  const stemGradId = isTerminal ? 'langgard-term-stem' : 'langgard-cyber-stem';
+  const barGradId = isTerminal ? 'langgard-term-bar' : 'langgard-cyber-bar';
   const shadowId = isTerminal ? 'langgard-shadow-term' : 'langgard-shadow-cyber';
 
   return (
@@ -21,78 +26,90 @@ export const LanggardLogo: React.FC<LanggardLogoProps> = ({
       viewBox="0 0 100 100"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className={`${className} transition-all duration-300 ${
+      className={`${className} overflow-visible transition-all duration-300 ${
         isTerminal
-          ? 'drop-shadow-[0_0_8px_rgba(255,117,151,0.55)]'
-          : 'drop-shadow-[0_0_8px_rgba(0,240,255,0.45)]'
+          ? 'drop-shadow-[0_0_10px_rgba(255,117,151,0.55)]'
+          : 'drop-shadow-[0_0_10px_rgba(56,189,248,0.45)]'
       }`}
       aria-label="Langgard Logo"
       role="img"
     >
       <defs>
-        {/* Cyber Theme Gradients (Cyan to Indigo/Violet) */}
-        <linearGradient id={cyberDiagId} x1="25%" y1="85%" x2="70%" y2="25%">
-          <stop offset="0%" stopColor="#00f0ff" />
-          <stop offset="55%" stopColor="#38bdf8" />
-          <stop offset="100%" stopColor="#60a5fa" />
+        {/* Cyber Theme Gradients (Cyan to Sky Blue to Violet) */}
+        <linearGradient id="langgard-cyber-diag" x1="80%" y1="10%" x2="15%" y2="90%">
+          <stop offset="0%" stopColor="#38bdf8" />
+          <stop offset="45%" stopColor="#0ea5e9" />
+          <stop offset="100%" stopColor="#2563eb" />
         </linearGradient>
 
-        <linearGradient id={cyberRightId} x1="30%" y1="30%" x2="85%" y2="85%">
-          <stop offset="0%" stopColor="#2563eb" />
-          <stop offset="45%" stopColor="#4f46e5" />
+        <linearGradient id="langgard-cyber-stem" x1="45%" y1="15%" x2="85%" y2="90%">
+          <stop offset="0%" stopColor="#1d4ed8" />
+          <stop offset="35%" stopColor="#3b82f6" />
+          <stop offset="70%" stopColor="#6366f1" />
           <stop offset="100%" stopColor="#9333ea" />
         </linearGradient>
 
-        {/* Terminal Red / Soft Pink Gradients */}
-        <linearGradient id={termDiagId} x1="25%" y1="85%" x2="70%" y2="25%">
-          <stop offset="0%" stopColor="#ff7597" />
-          <stop offset="60%" stopColor="#ffa3b8" />
-          <stop offset="100%" stopColor="#ffd1dc" />
+        <linearGradient id="langgard-cyber-bar" x1="0%" y1="50%" x2="100%" y2="50%">
+          <stop offset="0%" stopColor="#1d4ed8" />
+          <stop offset="100%" stopColor="#2563eb" />
         </linearGradient>
 
-        <linearGradient id={termRightId} x1="30%" y1="30%" x2="85%" y2="85%">
-          <stop offset="0%" stopColor="#e11d48" />
-          <stop offset="50%" stopColor="#ff4d6d" />
+        {/* Terminal Red / Soft Pink Theme Gradients */}
+        <linearGradient id="langgard-term-diag" x1="80%" y1="10%" x2="15%" y2="90%">
+          <stop offset="0%" stopColor="#ffd1dc" />
+          <stop offset="50%" stopColor="#ffa3b8" />
           <stop offset="100%" stopColor="#ff7597" />
         </linearGradient>
 
-        {/* Dynamic Soft Drop Shadow between the overlapping pillars */}
-        <filter id={shadowId} x="-20%" y="-20%" width="160%" height="160%">
+        <linearGradient id="langgard-term-stem" x1="45%" y1="15%" x2="85%" y2="90%">
+          <stop offset="0%" stopColor="#e11d48" />
+          <stop offset="40%" stopColor="#f43f5e" />
+          <stop offset="75%" stopColor="#ff4d6d" />
+          <stop offset="100%" stopColor="#ff7597" />
+        </linearGradient>
+
+        <linearGradient id="langgard-term-bar" x1="0%" y1="50%" x2="100%" y2="50%">
+          <stop offset="0%" stopColor="#e11d48" />
+          <stop offset="100%" stopColor="#ff4d6d" />
+        </linearGradient>
+
+        {/* Elevation Drop Shadow between overlapping pillars */}
+        <filter id={shadowId} x="-30%" y="-30%" width="160%" height="160%">
           <feDropShadow
             dx="2"
-            dy="1.5"
-            stdDeviation="2"
+            dy="1.6"
+            stdDeviation="1.8"
             floodColor="#000000"
-            floodOpacity={isTerminal ? 0.7 : 0.6}
+            floodOpacity={isTerminal ? 0.7 : 0.65}
           />
         </filter>
       </defs>
 
-      {/* Part 1 (Background layer): Right 't' / 'L' Structure */}
+      {/* Layer 1 (Lower): Right 't' / 'L' Structure */}
       <g>
-        {/* Middle Crossbar */}
+        {/* Horizontal Middle Crossbar */}
         <path
-          d="M 48.5 52 L 64 52"
-          stroke={`url(#${isTerminal ? termRightId : cyberRightId})`}
+          d="M 48.5 55.5 L 75.5 55.5"
+          stroke={`url(#${barGradId})`}
           strokeWidth="11"
           strokeLinecap="round"
         />
 
         {/* Vertical Stem curving into Bottom Foot */}
         <path
-          d="M 48.5 35 L 48.5 61 Q 48.5 68.5 56 68.5 L 68.5 68.5"
-          stroke={`url(#${isTerminal ? termRightId : cyberRightId})`}
+          d="M 48.5 19.5 L 48.5 76 Q 48.5 88.5 61 88.5 L 86.5 88.5"
+          stroke={`url(#${stemGradId})`}
           strokeWidth="11"
           strokeLinecap="round"
           strokeLinejoin="round"
         />
       </g>
 
-      {/* Part 2 (Foreground layer): Left Slanted Pillar with Soft Layer Elevation */}
+      {/* Layer 2 (Upper): Foreground Slanted Diagonal Pillar with Elevation Drop Shadow */}
       <g filter={`url(#${shadowId})`}>
         <path
-          d="M 33 68.5 L 49 32"
-          stroke={`url(#${isTerminal ? termDiagId : cyberDiagId})`}
+          d="M 13.5 88.5 L 48.5 11.5"
+          stroke={`url(#${diagGradId})`}
           strokeWidth="11"
           strokeLinecap="round"
         />
